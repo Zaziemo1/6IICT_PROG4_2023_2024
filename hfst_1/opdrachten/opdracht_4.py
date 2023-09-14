@@ -8,3 +8,12 @@ laptop_korneel = {
     "supplier": "???",
     "supplier_2": "bol.com"
 }
+laptop_korneel.pop("supplier_2")
+
+laptop_korneel["supplier"] = "signpost"
+laptop_korneel["status"] = "deployed"
+
+
+
+
+print(laptop_korneel)
