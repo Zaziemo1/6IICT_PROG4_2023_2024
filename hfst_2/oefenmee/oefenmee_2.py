@@ -9,5 +9,8 @@ print(response.json()) # Data in JSON-formaat
 print("#"*40) # Scheiding in opdrachtprompt
 
 response_json = response.json()
-print(response_json["setup"])    # De setup
-print(response_json["delivery"]) # De punchline
+if "joke" in response_json:
+    print(response_json["joke"])
+else:
+   print(response_json["setup"])    # De setup
+   print(response_json["delivery"]) # De punchline

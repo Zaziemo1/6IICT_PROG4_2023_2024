@@ -1,4 +1,4 @@
-import requests, json, random
+import requests, json
 
 def grappenmakker2000():
  link = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=political"
@@ -7,7 +7,7 @@ def grappenmakker2000():
  
  grap = data["setup"]
  antwoord = data["delivery"]
-
+ 
  print(grap)
  print(antwoord)
 
