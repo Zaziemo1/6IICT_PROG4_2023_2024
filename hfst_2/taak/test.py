@@ -1,7 +1,7 @@
 import requests,json
 from PIL import Image
 
-url ='https://api.deezer.com/search?q=artist:"Playboi Carti"'
+url ='https://api.deezer.com/search?q=track:"hvu fhuz eh  euzi oufhzuofuh euhfouhhf oizhfiy"'
 r = requests.get(url)
 fr = r.json()
 
