@@ -30,7 +30,7 @@ while keuze != 4:
             print("This album doesnt have any song or doesnt exist!!")
             break
         print(f"This album has been made by {response_json['data'][0]['artist']['name']}")
-        geschiedenis['album'] = album
+        geschiedenis['album'].append(album)
 
         while True:
             counter = int(counter)
@@ -72,7 +72,7 @@ while keuze != 4:
         if response_json['total'] == 0:
             print("This artist doesnt exist or doesnt have any songs!!")
             break
-        geschiedenis['artist'] = artist
+        geschiedenis['artist'].append(artist)
         print(f"""The most recent track: {response_json['data'][0]['title']}, its ranked {response_json['data'][0]['rank']} and its duration is {response_json['data'][0]['duration']}.
             The most recent album: {response_json['data'][0]['album']['title']},""")
         keuze3 = input("Do you want to see the artist?  ")
@@ -94,7 +94,7 @@ while keuze != 4:
         if response_json['total'] == 0:
             print("This track doesnt exist or hasnt been released yet!!!")
             break
-        geschiedenis['tracks'] = track
+        geschiedenis['tracks'].append(track)
         counter2 = 0
         while True:
             counter2 = int(counter2)
