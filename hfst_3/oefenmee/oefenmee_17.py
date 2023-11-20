@@ -30,6 +30,7 @@ def genereer():
     label_genereer.config(text=resultaat)
 
 def bereken_erlangs():
+    
     """ TODO:
 
     Deze functie is gelinkt aan de Button knop_2.
