@@ -57,21 +57,21 @@ def equal():
     regel = veld.get()
     index = regel.find(operator)
     
-    getal1 = regel[0:index]
-    getal2 = regel[index+1:]
+    getal2 = regel[0:index]
+    getal1 = regel[index+1:]
     print(getal1)
     print(getal2)
         
     
     if operator == "+":
         
-      resultaat = int(getal1)+int(getal2)
+      resultaat = int(getal2)+int(getal1)
     if operator == "-":
-        resultaat = int(getal1)-int(getal2)
+        resultaat = int(getal2)-int(getal1)
     if operator == "*":
-        resultaat = int(getal1)*int(getal2)
+        resultaat = int(getal2)*int(getal1)
     if operator == "/":
-        resultaat = int(getal1)/int(getal2)
+        resultaat = int(getal2)/int(getal1)
       
 
       
