@@ -6,7 +6,11 @@ try:
     else:
         getal = int( getal )
     print( fruit_lijst[getal] )
-except Exception:
+except ValueError:
+    print( "Er ging iets fout" ) 
+except IndexError:
+    print( "Er ging iets fout" ) 
+except:
     print( "Er ging iets fout" ) 
 
 print("Programma klaar") 
