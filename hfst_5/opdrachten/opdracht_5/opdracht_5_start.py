@@ -1,5 +1,40 @@
 import pygame
 
+class Speler():
+    def __init__(self,x_speler,y_speler,afb_speler,snelheid_speler,snelheid_kogel):
+        self.x_speler = x_speler
+        self.y_speler = y_speler
+        self.afb_speler = afb_speler
+        self.snelheid_speler = snelheid_speler
+
+        self.x_kogels = []
+        self.y_kogels = []
+        self.snelheid_kogel = snelheid_kogel
+
+
+        
+    def bewegen(self,toetsen):
+        self.toetsen = toetsen
+        if self.toetsen[pygame.K_LEFT]   and   self.x_speler > 0:        
+            self.x_speler = self.x_speler - self.snelheid_speler
+        if self.toetsen[pygame.K_RIGHT]  and   self.x_speler+afb_speler.get_width() < frame_breedte:        
+            self.x_speler = self.x_speler + self.snelheid_speler
+        if self.toetsen[pygame.K_UP]     and   self.y_speler > 0:      
+            self.y_speler = self.y_speler - self.snelheid_speler
+        if self.toetsen[pygame.K_DOWN]   and   self.y_speler+afb_speler.get_height() < frame_hoogte:     
+            self.y_speler = self.y_speler + self.snelheid_speler
+    
+    
+    
+    def schieten(self):
+
+        self.toetsen = toetsen
+        if self.toetsen[pygame.K_SPACE]:
+            self.x_kogels.append(self.x_speler + afb_speler.get_width()) 
+            self.y_kogels.append(self.y_speler + afb_speler.get_height()//2) 
+
+        pass
+
 # Start pygame & wijzig titel van spel.
 pygame.init()
 pygame.display.set_caption('Opdracht 5')
@@ -11,10 +46,13 @@ frame = pygame.display.set_mode((frame_breedte, frame_hoogte))
 
 # Zet alle benodigde afbeeldingen & hun startposities klaar.
 # x_kogels & y_kogels zijn lijsten omdat ze de posities van alle geschoten kogels zullen bevatten.
-x_vlieg, y_vlieg, snelheid_vlieg = 0, frame_hoogte//2, 5
-afb_vlieg = pygame.image.load(r"vliegtuig.png")
-x_kogels, y_kogels, snelheid_kogel = [], [], 8
-afb_kogel = pygame.image.load(r"kogel.png")
+afb_speler = pygame.image.load(r"hfst_5/opdrachten/opdracht_5/vliegtuig.png")
+afb_kogel = pygame.image.load(r"hfst_5\opdrachten\opdracht_5\kogel.png")
+speler = Speler(0,frame_hoogte//2,afb_speler,50,100)
+
+
+
+
 
 # Maak een pygame klok om de FPS van het spel te bepalen.
 klok = pygame.time.Clock()
@@ -25,21 +63,12 @@ while running:
     pygame.event.pump() # Zorg ervoor dat pygame toetsen mag ophalen.
     toetsen = pygame.key.get_pressed() # Haal toetsen op.
 
-    # Beweeg vliegtuig op basis van toetsen.
-    if toetsen[pygame.K_LEFT]   and   x_vlieg > 0:        
-        x_vlieg = x_vlieg - snelheid_vlieg
-    if toetsen[pygame.K_RIGHT]  and   x_vlieg+afb_vlieg.get_width() < frame_breedte:        
-        x_vlieg = x_vlieg + snelheid_vlieg
-    if toetsen[pygame.K_UP]     and   y_vlieg > 0:      
-        y_vlieg = y_vlieg - snelheid_vlieg
-    if toetsen[pygame.K_DOWN]   and   y_vlieg+afb_vlieg.get_height() < frame_hoogte:     
-        y_vlieg = y_vlieg + snelheid_vlieg
+    # Beweeg spelertuig op basis van toetsen.
+    speler.bewegen(toetsen)
 
-    # Zet nieuwe kogel langs vliegtuig door toe te voegen aan lijsten x_kogels & y_kogels.
-    if toetsen[pygame.K_SPACE]:
-        x_kogels.append(x_vlieg + afb_vlieg.get_width()) 
-        y_kogels.append(y_vlieg + afb_vlieg.get_height()//2) 
-
+    # Zet nieuwe kogel langs spelertuig door toe te voegen aan lijsten x_kogels & y_kogels.
+    speler.schieten()
+    
     # Sluit spel af bij indrukken knop rechts-bovenaan.
     for event in pygame.event.get():  # Haal alle pygame events op.
         if event.type == pygame.QUIT: # Als het 'type' QUIT geregistreerd is.
@@ -47,12 +76,12 @@ while running:
 
     " ACTIE 2: spel-staat wijzigen. "
     klok.tick(FPS) # Zorg voor constante framerate.
-    for index, x_kogel in enumerate(x_kogels): x_kogels[index] = x_kogel + snelheid_kogel # Beweeg de kogels.
+    for index, speler.x_kogel in enumerate(speler.x_kogels): speler.x_kogels[index] = speler.x_kogel + speler.snelheid_kogel # Beweeg de kogels.
 
     " Actie 3: teken & toon frame. "
     frame.fill((0,0,0), (0,0,frame_breedte,frame_hoogte)) # Maak frame leeg door het zwart te maken.
-    frame.blit(afb_vlieg, (x_vlieg,y_vlieg)) # Teken vliegtuig.
-    for index, x_kogel in enumerate(x_kogels): frame.blit(afb_kogel, (x_kogels[index],y_kogels[index])) # Teken kogels.
+    frame.blit(afb_speler, (speler.x_speler,speler.y_speler)) # Teken spelertuig.
+    for index, x_kogel in enumerate(speler.x_kogels): frame.blit(afb_kogel, (speler.x_kogels[index],speler.y_kogels[index])) # Teken kogels.
     pygame.display.flip() # Toon frame.
 
 pygame.quit()

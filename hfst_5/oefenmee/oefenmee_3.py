@@ -1,10 +1,10 @@
 # Op welke regels print deze code iets?
 # Er za ook een fout ontstaan. Leg uit waarom.
 class Kat:
-    naam = "Borysz"
+    naam = "Utsman Abdul Jalil Shisha"
 
     def miauw(self):
-        print(f"{kitten.naam} zegt miauw")
+        print(f"{self.naam} zegt miauw")
 
 kater = Kat()
 kater.miauw() 
