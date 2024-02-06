@@ -48,7 +48,7 @@ frame = pygame.display.set_mode((frame_breedte, frame_hoogte))
 # x_kogels & y_kogels zijn lijsten omdat ze de posities van alle geschoten kogels zullen bevatten.
 afb_speler = pygame.image.load(r"hfst_5/opdrachten/opdracht_5/vliegtuig.png")
 afb_kogel = pygame.image.load(r"hfst_5\opdrachten\opdracht_5\kogel.png")
-speler = Speler(0,frame_hoogte//2,afb_speler,50,100)
+speler = Speler(0,frame_hoogte//2,afb_speler,10,1)
 
 
 
