@@ -1,5 +1,10 @@
 # Bepaal het getal van fibonnaci recursief.
-
+def fib(getal):
+    if getal == 1 or getal == 2:
+        return 1
+    
+    fibb = fib(getal-1) + fib(getal-2)
+    return fibb
 
 
 

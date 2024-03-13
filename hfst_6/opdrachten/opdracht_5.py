@@ -10,6 +10,16 @@ Het tekenen van rechthoeken op het scherm kan als volgt:
 pygame.draw.rect(scherm, ZWART, [x, y, breedte, hoogte],1)
 """
 def recursieve_rechthoek(x, y, breedte, hoogte, scherm):
+    if breedte < 10 or hoogte < 10:
+        return x,y,breedte,hoogte,scherm
+
+    pygame.draw.rect(scherm,ZWART,[x,y,breedte,hoogte],1)
+    breedte = breedte * 0.8
+    hoogte = hoogte * 0.8
+    x = x + 0.1*breedte
+    y= y + 0.1*hoogte
+    recursieve_rechthoek(x,y,breedte,hoogte,scherm)
+
     pass
 
 """ 
