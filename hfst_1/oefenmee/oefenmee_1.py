@@ -1,3 +1,5 @@
+import test_module
+
 Voetbalscores = {
     "Messi": "200 Goals",
     "Ronaldo": "200 Goals",
